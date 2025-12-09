@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Secret Code</title>
+		<style>
+			:root{
+				--black: #000000;
+				--green: #00c853;
+				--purple: #8a2be2;
+				--bg: #0b0b0d;
+				--muted: #d6d6d6;
+			}
+
+			html,body{
+				height:100%;
+				margin:0;
+			}
+
+			body{
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				background:var(--bg);
+				font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+				color:var(--muted);
+			}
+
+			.center-box{
+				text-align:center;
+				padding:36px;
+				border-radius:12px;
+				background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(10,8,20,0.25));
+				box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 0 4px rgba(138,43,226,0.03);
+				min-width:300px;
+			}
+
+			h1{
+				margin:0 0 18px 0;
+				color:var(--purple);
+				font-size:1.6rem;
+				letter-spacing:0.6px;
+				text-shadow: 0 2px 8px rgba(138,43,226,0.15);
+			}
+
+			.hint{
+				margin-bottom:10px;
+				color:var(--green);
+				font-weight:600;
+				font-size:0.95rem;
+			}
+
+			.secret-input{
+				width:100%;
+				max-width:320px;
+				padding:12px 14px;
+				font-size:1rem;
+				border-radius:10px;
+				border:3px solid var(--green);
+				background: linear-gradient(90deg, var(--black) 0%, rgba(0,0,0,0.65) 50%, rgba(74,0,91,0.6) 100%);
+				color:var(--muted);
+				outline:none;
+				box-shadow: 0 6px 16px rgba(0,0,0,0.6), 0 0 18px rgba(0,200,83,0.06);
+				text-align:center;
+				font-weight:600;
+			}
+
+			.secret-input::placeholder{
+				color:rgba(255,255,255,0.6);
+				font-weight:500;
+			}
+
+			.secret-input:focus{
+				border-color:var(--purple);
+				box-shadow: 0 8px 26px rgba(0,0,0,0.6), 0 0 30px rgba(138,43,226,0.12);
+			}
+
+			@media (max-width:420px){
+				.center-box{ padding:20px; }
+				h1{ font-size:1.3rem; }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="center-box">
+			<h1>Enter Secret Code</h1>
+			<div class="hint">Black, green and purple theme</div>
+			<input class="secret-input" type="password" placeholder="Type your secret code" aria-label="Secret code" />
+		</div>
+	</body>
+</html>
+
