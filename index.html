@@ -1,93 +1,55 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>Secret Code</title>
-		<style>
-			:root{
-				--black: #000000;
-				--green: #00c853;
-				--purple: #8a2be2;
-				--bg: #0b0b0d;
-				--muted: #d6d6d6;
-			}
-
-			html,body{
-				height:100%;
-				margin:0;
-			}
-
-			body{
-				display:flex;
-				align-items:center;
-				justify-content:center;
-				background:var(--bg);
-				font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-				color:var(--muted);
-			}
-
-			.center-box{
-				text-align:center;
-				padding:36px;
-				border-radius:12px;
-				background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(10,8,20,0.25));
-				box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 0 4px rgba(138,43,226,0.03);
-				min-width:300px;
-			}
-
-			h1{
-				margin:0 0 18px 0;
-				color:var(--purple);
-				font-size:1.6rem;
-				letter-spacing:0.6px;
-				text-shadow: 0 2px 8px rgba(138,43,226,0.15);
-			}
-
-			.hint{
-				margin-bottom:10px;
-				color:var(--green);
-				font-weight:600;
-				font-size:0.95rem;
-			}
-
-			.secret-input{
-				width:100%;
-				max-width:320px;
-				padding:12px 14px;
-				font-size:1rem;
-				border-radius:10px;
-				border:3px solid var(--green);
-				background: linear-gradient(90deg, var(--black) 0%, rgba(0,0,0,0.65) 50%, rgba(74,0,91,0.6) 100%);
-				color:var(--muted);
-				outline:none;
-				box-shadow: 0 6px 16px rgba(0,0,0,0.6), 0 0 18px rgba(0,200,83,0.06);
-				text-align:center;
-				font-weight:600;
-			}
-
-			.secret-input::placeholder{
-				color:rgba(255,255,255,0.6);
-				font-weight:500;
-			}
-
-			.secret-input:focus{
-				border-color:var(--purple);
-				box-shadow: 0 8px 26px rgba(0,0,0,0.6), 0 0 30px rgba(138,43,226,0.12);
-			}
-
-			@media (max-width:420px){
-				.center-box{ padding:20px; }
-				h1{ font-size:1.3rem; }
-			}
-		</style>
+		<title>Código Secreto</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="styles.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="center-box">
-			<h1>Enter Secret Code</h1>
-			<div class="hint">Black, green and purple theme</div>
-			<input class="secret-input" type="password" placeholder="Type your secret code" aria-label="Secret code" />
-		</div>
+			<canvas id="matrixCanvas" aria-hidden="true"></canvas>
+			<div class="scanlines" aria-hidden="true"></div>
+			<div class="vignette" aria-hidden="true"></div>
+		<form id="mainForm" class="center-box">
+			<div class="header">
+				<div class="logo" aria-hidden="true">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect x="3" y="3" width="18" height="18" rx="4" fill="#001607" opacity="0.9"/>
+							<path d="M7 11v-1a5 5 0 0110 0v1" stroke="#00ff80" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+							<rect x="9" y="13" width="6" height="4" rx="1" fill="#00220a" stroke="#00ff80" stroke-width="0.8" opacity="0.95"/>
+						</svg>
+				</div>
+				<div>
+						<h1 class="glitch h1-animated" data-text="INTRODUCE EL CÓDIGO SECRETO">INTRODUCE EL CÓDIGO SECRETO</h1>
+						<div class="subtitle">Terminal seguro — enmascarado por defecto</div>
+						<div style="display:flex; align-items:center; gap:8px;">
+						</div>
+						<div class="love-note">Para ti, mi amor — este mensaje y este código los hizo con el amor en lo más profundo de mi alma.</div>
+				</div>
+			</div>
+
+			<div class="hint">Campo protegido — sólo para ti</div>
+
+			<div class="field">
+				<input id="secret" class="secret-input" type="password" placeholder="Escribe el código que has descubierto" aria-label="Código secreto" />
+				<button id="reveal" class="reveal-btn" type="button" aria-pressed="false" title="Mostrar código">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+						<circle cx="12" cy="12" r="3" fill="white" opacity="0.95"/>
+					</svg>
+				</button>
+			</div>
+
+			<div class="muted-note">Este código es solo para ti mi amor.</div>
+
+			<div id="status" role="status" aria-live="polite" class="muted-note" style="min-height:28px"></div>
+			<div class="actions">
+				<button id="submitBtn" class="primary" type="submit">Enviar con amor</button>
+			</div>
+		</form>
+
+		<script src="script.js"></script>
 	</body>
 </html>
 
